@@ -1,11 +1,11 @@
-.item { width: 10%; }
-.item.w2 { width: 20%; }
-.item.w3 { width: 30%; }
-
-
-/* taken from http://codepen.io/desandro/pen/fIbHB */
-.packery:after {
-  content: ' ';
-  display: block;
-  clear: both;
+.item {
+  width: 10%;
+  border: black solid 1px;
+  /*border-radius: 6px;*/
+}
+.item.w2 {
+  width: 20%;
+}
+.item.w3 {
+  width: 30%;
 }

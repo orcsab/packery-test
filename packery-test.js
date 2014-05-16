@@ -22,16 +22,20 @@ $(function () {
 
   // hints from http://codepen.io/desandro/pen/mjcGq
   $.each(images, function (index, value) {
-    var item = '<img class="item" src="' + value.loc + '" >';
-    var $item = $(item);
-    if (value.rating / 3 > 2) {
-      console.log('adding class')
-      $item.addClass('w3');
-    }
+    // first establish the size of the image using its rating.
+    var size = '';
+    if (value.rating / 3 > 2)
+      size = 'w3';
     else if (value.rating / 3 > 1)
-      $item.addClass('w2');
+      size = 'w2';
 
-    $container.append($item).packery('appended', $item);
+    var items = '<div class="item '+ size + '" style="position: relative; left: 0; top: 0;">';
+    items += '<img src="' + value.loc + '" style="position: relative; top: 0; left: 0; max-width: 100%; height: auto;" >';
+    items += '<img src="images/x-mark-5-256.png" width="30" style="position: absolute; top: 0px; left: 0px;" >';
+    items += '</div>';
+    var $items = $(items);
+    $items.click(itemClick)
+    $container.append($items).packery('appended', $items);
   });
 
   $.each($container.packery('getItemElements'), function (index, value) {
@@ -45,3 +49,12 @@ $(function () {
   });
 
 });
+
+function itemClick (event) {
+  if (event.offsetX <= 30 && event.offsetY <= 30) {
+    var $container = $('#container');
+    $container.packery('remove', event.target.parentElement);
+    $container.packery('layout');
+  }
+}
+
