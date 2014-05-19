@@ -7,11 +7,13 @@
     <script src="packery.pkgd.min.js"></script>
     <script src="draggabilly.pkgd.js"></script>
     <script src="packery-test.js"></script>
+    <script src="facebook.js"></script>
     <link rel="stylesheet" href="packery-test.css">
   </head>
   <body>
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-    </fb:login-button>
+    <div id="fb-root"></div>
+    <button type="button" id="fb-login">Facebook Login</button>
+    <button type="button" id="fb-invite">Invite Friends</button>
 
     <div id="status">
     </div>
